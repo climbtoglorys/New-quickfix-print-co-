@@ -1,0 +1,86 @@
+[
+  {
+    "name": "Search the catalogue and open a sample product",
+    "sanity": true,
+    "viewport": "desktop",
+    "covers": [
+      "catalogue search by name",
+      "product detail page",
+      "product-specific WhatsApp enquiry link",
+      "sample listing labelling",
+      "database read of products"
+    ],
+    "description": "Verifies visitors can find a product by name, open its detail page, and reach a WhatsApp enquiry that names the product.",
+    "steps": [
+      "Open the Products page from the main navigation",
+      "Type 'toner' into the search box",
+      "Open View Details on the Toner Cartridge card"
+    ],
+    "expected": "Only the Toner Cartridge card is listed and it is labelled as a sample listing. Its detail page shows the product name, the text Contact for price, a note asking the visitor to confirm compatibility, and an Enquire on WhatsApp button whose link starts with https://wa.me/2348185438551 and includes Toner Cartridge in the message."
+  },
+  {
+    "name": "Filter by category, see empty results, and clear filters",
+    "viewport": "desktop",
+    "covers": [
+      "category filter",
+      "empty results message",
+      "clear filters",
+      "product count update"
+    ],
+    "description": "Verifies catalogue filters narrow the list, show a clear empty state, and can be reset.",
+    "steps": [
+      "Open the Products page",
+      "Select the Consumables category",
+      "Search for 'zzzzqq'",
+      "Click Clear filters"
+    ],
+    "expected": "Selecting Consumables shows only Printer Consumable with an updated product count. Searching zzzzqq shows a no products match message with a count of zero. Clear filters restores the full list of sample products."
+  },
+  {
+    "name": "Mobile menu and contact form validation",
+    "viewport": "mobile",
+    "covers": [
+      "mobile navigation menu",
+      "contact form required-field validation",
+      "email format validation",
+      "click-to-call links"
+    ],
+    "description": "Verifies the mobile menu routes to Contact and the contact form rejects empty and invalid input without submitting.",
+    "steps": [
+      "Open the menu using the menu button",
+      "Tap Contact",
+      "Press Send enquiry with every field empty",
+      "Enter 'QA Visitor' as name, '08000000000' as phone, 'not-an-email' as email, and 'Test' as message, then press Send enquiry"
+    ],
+    "expected": "The menu opens and leads to the Contact page, which shows both telephone numbers as links. The empty submit shows required-field errors for name, phone and message. The invalid email shows an email error and no success message appears."
+  },
+  {
+    "name": "Works and Clients pages show slideshows or an honest empty state",
+    "viewport": "desktop",
+    "covers": [
+      "works page",
+      "clients page",
+      "slideshow empty state",
+      "database read of published showcase items"
+    ],
+    "description": "Verifies the Our Work and Clients pages load and never show invented content.",
+    "steps": [
+      "Open the Our Work page from the main navigation",
+      "Open the Clients page from the main navigation",
+      "Open the Home page and scroll to the Our Work and Our Clients sections"
+    ],
+    "expected": "Each page loads with its heading. Each shows either published slides with previous and next controls, or a message saying nothing has been published yet. The Home page contains both sections."
+  },
+  {
+    "name": "Admin area is closed to visitors",
+    "viewport": "desktop",
+    "covers": [
+      "anonymous admin access denial",
+      "admin sign-in form",
+      "no public sign-up"
+    ],
+    "description": "Verifies an anonymous visitor only sees a sign-in form and no catalogue management controls.",
+    "steps": ["Click Staff login in the footer", "Look at the page contents"],
+    "expected": "An Admin sign in form with email and password fields is shown. No product, work, client or enquiry management controls are visible and there is no option to create an account."
+  }
+]
